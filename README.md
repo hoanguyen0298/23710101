@@ -1,97 +1,75 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+NGUYEN HONG PHUC — MSSV 23710101 — https://github.com/hoanguyen0298/23710101.git — stamp #647760
 
-# Getting Started
+# CampusMart_23710101
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+Kiểm tra thực hành 1 — Lập trình cho thiết bị di động (TH) — IUH, Khoa CN Điện tử.
 
-## Step 1: Start Metro
+## Định danh
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+| Mục | Giá trị |
+| --- | --- |
+| Họ tên | NGUYEN HONG PHUC |
+| MSSV | 23710101 |
+| Stamp | #647760 |
+| Repo (clone HTTPS) | https://github.com/hoanguyen0298/23710101.git |
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+Dòng tên hiện trên Home và trong Modal:
+
+```
+TH1 · 23710101 · NGUYEN HONG PHUC · #647760
+```
+
+## Chạy trên máy ảo
 
 ```sh
-# Using npm
+npm install
 npm start
-
-# OR using Yarn
-yarn start
-```
-
-## Step 2: Build and run your app
-
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
-```sh
-# Using npm
 npm run android
-
-# OR using Yarn
-yarn android
 ```
 
-### iOS
+## Cây thư mục
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
+```
+CampusMart_23710101/
+├── README.md
+├── App.tsx
+├── package.json          (name: campusmart-23710101)
+├── babel.config.js       (module-resolver: alias @constants, @components, ...)
+├── tsconfig.json         (paths khớp babel)
+├── docs/screenshot-th1.png
+└── src/
+    ├── constants/student.ts
+    ├── constants/theme.ts
+    ├── contexts/ThemeContext.tsx
+    ├── hooks/useCountdown.ts
+    ├── services/productApi.ts
+    ├── components/ui/Typography.tsx
+    ├── components/ui/ShopInput.tsx
+    ├── components/ui/ShopButton.tsx
+    └── screens/HomeScreen.tsx
 ```
 
-Then, and every time you update your native dependencies, run:
+## Nội dung theo từng câu
 
-```sh
-bundle exec pod install
-```
+**Câu 1** — RN CLI + TypeScript, path alias (babel + tsconfig), `student.ts`
+(2 ô thật + seed + VARIANT + examStamp), `theme.ts` (COLORS / SIZES / FONTS),
+`App.tsx` bọc SafeAreaProvider → ThemeProvider → HomeScreen.
+Ba atom: `Typography`, `ShopInput`, `ShopButton` — StyleSheet.create + memo.
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+**Câu 2** — Home đủ khối (0)(A)(B)(C)(D)(E). `fetchProducts` dùng `fetch`
+(`GET https://fakestoreapi.com/products?limit=8`, kiểm tra `res.ok`), gọi trong
+`useEffect` có cleanup bằng cờ `alive`. Ba trạng thái: đang tải / có dữ liệu /
+lỗi mạng + nút Thử lại. FlatList có `keyExtractor` ghép MSSV, `ListEmptyComponent`
+riêng cho "Không có món phù hợp". Lọc tên + loại bằng `useMemo`, card `memo` +
+`useCallback`.
 
-```sh
-# Using npm
-npm run ios
+**Câu 3** — Modal `transparent` animationType `fade`, số lượng bằng `useReducer`
+(ADD / REMOVE / RESET, trừ không xuống dưới 1), xác nhận → `Alert` có MSSV, họ tên,
+stamp, tên món, số lượng, xong thì đóng Modal và reset về 1; Đóng không Alert.
+`ThemeContext` + `ThemeProvider`, `useTheme()` gọi ngoài Provider thì `throw`.
+`useCountdown(FLASH_SECONDS)` — hết giờ khóa nút Đặt và nút Xác nhận, hiện
+"Hết giờ flash-sale".
 
-# OR using Yarn
-yarn ios
-```
+## Ảnh máy ảo
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
-
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
-
-## Step 3: Modify your app
-
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+`docs/screenshot-th1.png`

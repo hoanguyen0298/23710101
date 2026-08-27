@@ -12,11 +12,14 @@ export const COLORS = {
   success: '#16A34A',
 };
 
+// Dark Mode: nền #042F2E, card #0B4F4A, chữ #F0FDFA — KHÔNG đổi primary
 export const DARK_COLORS: typeof COLORS = {
   ...COLORS,
   background: '#042F2E',
   surface: '#0B4F4A',
   text: '#F0FDFA',
+  textLight: '#A7CFCA',
+  border: '#115E59',
 };
 
 export const SIZES = {
